@@ -1,0 +1,55 @@
+<launch>
+
+    <arg name="max_vel" value="2.0"/>
+    <arg name="max_acc" value="1.0"/>
+    
+    <arg name="fixed_frame" default="world"/>
+
+    <param name="robot_description" textfile="$(find opt_planner)/model/car_model/default.urdf"/>
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find opt_planner)/rviz/display_hybrid_astar.rviz"/>
+
+    <!--static_transform_publisher x y z yaw pitch roll frame_id child_frame_id period_in_ms-->
+    <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster"
+          args="0 0 0 0 0 0 world map 100"/>
+
+    <node pkg="map_server" type="map_server" name="map_server" args="$(find opt_planner)/maps/map.yaml"/>
+
+    <node pkg="opt_planner" type="opt_planner_node" name="opt_planner_node" output="screen">
+        <!-- hybrid A star -->
+        <param name="planner/steering_angle" value="10.0"/>
+        <param name="planner/steering_angle_discrete_num" value="1"/>
+        <param name="planner/wheel_base" value="0.82"/>
+        <param name="planner/segment_length" value="1.6"/>
+        <param name="planner/segment_length_discrete_num" value="8"/>
+        <param name="planner/steering_penalty" value="1.5"/>
+        <param name="planner/reversing_penalty" value="3.0"/>
+        <param name="planner/steering_change_penalty" value="2.0"/>
+        <param name="planner/shot_distance" value="5.0"/>
+        <param name="planner/map_resolution" value="0.2"/>
+
+        <!-- planner manager -->
+        <param name="manager/max_vel" value="$(arg max_vel)" type="double"/>
+        <param name="manager/max_acc" value="$(arg max_acc)" type="double"/>
+        <param name="manager/max_jerk" value="4" type="double"/>
+        <param name="manager/control_points_distance" value="0.2" type="double"/>
+        <param name="manager/feasibility_tolerance" value="0.05" type="double"/>
+
+        <!-- trajectory optimization -->
+        <param name="optimization/lambda_smooth" value="5.0" type="double"/>
+        <param name="optimization/lambda_collision" value="500" type="double"/>
+        <param name="optimization/lambda_feasibility" value="0.1" type="double"/>
+        <param name="optimization/lambda_fitness" value="1.6" type="double"/>
+        <param name="optimization/dist0" value="1" type="double"/>
+        <param name="optimization/max_vel" value="$(arg max_vel)" type="double"/>
+        <param name="optimization/max_acc" value="$(arg max_acc)" type="double"/>
+
+        <param name="bspline/limit_vel" value="$(arg max_vel)" type="double"/>
+        <param name="bspline/limit_acc" value="$(arg max_acc)" type="double"/>
+        <param name="bspline/limit_ratio" value="1.1" type="double"/>
+        
+    </node>
+
+</launch>

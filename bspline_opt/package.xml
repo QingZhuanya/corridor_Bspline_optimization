@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>bspline_opt</name>
+  <version>0.0.0</version>
+  <description>The bspline_opt package</description>
+  <maintainer email="1278208225@qq.com">Long qinying</maintainer>
+
+  <license>TODO</license>
+
+ 
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>plan_env</build_depend>
+  <build_depend>hybrid_a_star</build_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+  <build_export_depend>plan_env</build_export_depend>
+  <build_export_depend>hybrid_a_star</build_export_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>plan_env</exec_depend>
+  <exec_depend>hybrid_a_star</exec_depend>
+
+  <export>
+  </export>
+</package>
