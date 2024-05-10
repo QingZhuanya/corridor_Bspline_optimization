@@ -1,6 +1,4 @@
-
-
-<video src="/home/qinzhuan/opt_planner/Optimization_Corridor_Bspline/src/planner/Videos/corridor_Bspline.mp4"></video>
+<video src="https://github.com/QingZhuanya/corridor_Bspline_optimization/blob/master/Videos/corridor_Bspline.mp4" controls="controls" width="500" height="300">您的浏览器不支持播放该视频！</video>
 
 ## 1. Setup
 
