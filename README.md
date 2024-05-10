@@ -1,4 +1,6 @@
-<video src="https://github.com/QingZhuanya/corridor_Bspline_optimization/blob/master/Videos/corridor_Bspline.mp4" controls="controls" width="500" height="300">您的浏览器不支持播放该视频！</video>
+<img src="Videos/picture1.png" alt="img0" style="zoom: 33%;" />
+
+<img src="Videos/picture2.png" alt="img0" style="zoom: 33%;" />
 
 ## 1. Setup
 
